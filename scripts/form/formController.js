@@ -1,4 +1,4 @@
-testApp.controller('formController', function formController($scope, formService){
+testApp.controller('formController', function formController($scope, formService, dataPassing){
 	$scope.list = [];
 	$scope.total = 0;
 	$scope.options = [{name: 'Entertainment', value: 'Entertainment'} , {name: 'Utility', value: 'Utility'}, {name: 'Rent', value: 'Rent'},{name: 'Food', value: 'Food'},{ name: 'Other', value: 'Other'}];
@@ -8,6 +8,7 @@ testApp.controller('formController', function formController($scope, formService
 
 	$scope.submitForm = function(){
 		$scope.list.push($scope.sTransaction);
+		dataPassing.data($scope.list);
 		//formService.addTransaction($scope.sTransaction);
 		$scope.total = $scope.getTotal();
 		$scope.sTransaction = null;
